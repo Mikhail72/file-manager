@@ -175,7 +175,6 @@ ${os
         process.stdin.write("Invalid input\n");
     }
   } catch (e) {
-    console.error(e);
     process.stdin.write("Operation failed\n");
   }
 
@@ -188,10 +187,8 @@ process.on("end", () => {
   );
 });
 
-// move to modules
-
 function changeDir(dir) {
-  if (dir === os.homedir() || !dir) {
+  if (!os.homedir().includes(dir) && !dir) {
     return;
   }
 
