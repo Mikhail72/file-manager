@@ -181,10 +181,12 @@ ${os
   process.stdin.write(`You are currently in ${process.cwd()}\n`);
 });
 
-process.on("end", () => {
+process.on("SIGINT", () => {
   process.stdin.write(
-    `Thank you for using File Manager, ${username}, goodbye!\n`
+    `\nThank you for using File Manager, ${username}, goodbye!\n`
   );
+
+  process.exit(0);
 });
 
 function changeDir(dir) {
